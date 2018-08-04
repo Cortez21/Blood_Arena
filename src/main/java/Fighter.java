@@ -1,3 +1,4 @@
+
 import java.util.Random;
 
 /**
@@ -26,11 +27,27 @@ public abstract class Fighter {
         this.target = target;
     }
 
-    private void setDamage(int damage) {
+    public void setDamage(int damage) {
         this.damage = damage;
     }
 
-    public void turn(int target, int damage) {
+    public int getHealth() {
+        return health;
+    }
+
+    public int getBlock() {
+        return block;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void turn(int target, int damage, Fighter enemy) {
         if (!blocking(target)) {
             drainHealth(damage);
         }
@@ -45,7 +62,7 @@ public abstract class Fighter {
         return false;
     }
 
-    public void drainHealth(int damage) {
+    void drainHealth(int damage) {
         health -= damage;
     }
 
