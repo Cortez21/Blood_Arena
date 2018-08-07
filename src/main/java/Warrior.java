@@ -8,27 +8,13 @@ public class Warrior extends Fighter {
         super(name);
     }
 
-    private boolean breakUp;
 
-    public boolean isBreakUp() {
-        return breakUp;
-    }
-
-    private void setBreakUp(boolean is) {
-        breakUp = is;
-    }
-
-    public void turn(int target, int damage) {
-        if (!blocking(target)) {
-            drainHealth(damage);
-        }
-
+    public void turn(int target, int damage, Fighter enemy) {
+        super.turn(target, damage, enemy);
         generateBrakeUp();
-
-        generateDamage(4, 10);
     }
 
-    private void generateBrakeUp(){
+    private void generateBrakeUp() {
         if (numberGenerator(1, 4) == 1) {
             setBreakUp(true);
         } else {

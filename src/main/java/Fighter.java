@@ -10,10 +10,11 @@ public abstract class Fighter {
 
     private final String name;
     private int health = 100;
-    private int target;
-    private int block;
-    private int damage;
-
+    private int target = 1;
+    private int block = 1;
+    private int damage = 1;
+    private boolean breakUp = false;
+    Fighter enemy;
 
     public Fighter(String name) {
         this.name = name;
@@ -47,7 +48,16 @@ public abstract class Fighter {
         return damage;
     }
 
+    public boolean isBreakUp() {
+        return breakUp;
+    }
+
+    void setBreakUp(boolean is) {
+        breakUp = is;
+    }
+
     public void turn(int target, int damage, Fighter enemy) {
+        this.enemy = enemy;
         if (!blocking(target)) {
             drainHealth(damage);
         }
@@ -56,7 +66,7 @@ public abstract class Fighter {
     }
 
     public boolean blocking(int target) {
-        if (block == target) {
+        if (block == target && !enemy.isBreakUp()) {
             return true;
         }
         return false;

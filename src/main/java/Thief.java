@@ -18,11 +18,10 @@ public class Thief extends Fighter {
         return dodge;
     }
 
-    public void turn(int target, int damage) {
+    public void turn(int target, int damage, Fighter enemy) {
         if (!blocking(target) && !generateDodge()) {
             drainHealth(damage);
         }
-
         generateDamage(4, 10);
     }
 

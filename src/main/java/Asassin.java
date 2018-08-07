@@ -20,10 +20,10 @@ public class Asassin extends Fighter {
 
     public void generateDamage(int min, int max) {
         if (numberGenerator(1, 4) == 1) {
-            super.setDamage(numberGenerator(min, max) * 2);
+            setDamage(numberGenerator(min, max) * 2);
             setCrit(true);
         } else {
-            super.setDamage(numberGenerator(min, max));
+            setDamage(numberGenerator(min, max));
             setCrit(false);
         }
     }
